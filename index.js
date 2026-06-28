@@ -27,14 +27,7 @@ mongoose
 
 const app = express()
 
-// Middleware to handle cors
-const allowedOrigins = [
-  'http://localhost:5173',
-  ...(process.env.FRONT_END_URL || "")
-    .split(",")
-    .map((origin) => origin.trim())
-    .filter(Boolean),
-];
+
 
 app.use(
   cors({
@@ -79,4 +72,4 @@ app.use((err, req, res, next) => {
 
 
 
-module.exports = app;
+export default app;
