@@ -37,19 +37,19 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps, curl requests, or Postman)
-        if (!origin) return callback(null, true);
-        
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true 
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl requests, or Postman)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true 
 }));
 
 // Middleware to handle JSON object in req body
@@ -58,9 +58,10 @@ app.use(express.json())
 app.use(cookieParser())
 
 // app.listen(3000, () => {
-//   console.log("Server is running on port 3000!")
-// })
-
+  //   console.log("Server is running on port 3000!")
+  // })
+  app.get('/', (req, res) => res.send('Hello from the backend!'));
+  
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/tasks", taskRoutes)
@@ -82,6 +83,5 @@ app.use((err, req, res, next) => {
 })
 
 
-app.get('/', (req, res) => res.send('Hello from the backend!'));
 
 module.exports = app;
