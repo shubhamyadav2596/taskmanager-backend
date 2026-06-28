@@ -32,7 +32,7 @@ const app = express()
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
+      "https://task-manager-sigma-nine-54.vercel.app",
       "http://localhost:5173"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
