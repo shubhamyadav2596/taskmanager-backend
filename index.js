@@ -49,7 +49,7 @@ app.use(cors({
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Allow cookies/headers if needed
+    credentials: true 
 }));
 
 // Middleware to handle JSON object in req body
@@ -57,9 +57,9 @@ app.use(express.json())
 
 app.use(cookieParser())
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!")
-})
+// app.listen(3000, () => {
+//   console.log("Server is running on port 3000!")
+// })
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
@@ -80,3 +80,8 @@ app.use((err, req, res, next) => {
     message,
   })
 })
+
+
+app.get('/', (req, res) => res.send('Hello from the backend!'));
+
+module.exports = app;
